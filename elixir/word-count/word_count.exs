@@ -8,7 +8,7 @@ defmodule Words do
   def count(sentence) do
     tokens = sentence 
       |> String.downcase()
-      |> String.replace(~r/[[:punct:]]/, " ") 
+      |> String.replace(~r/@|#|\$|%|&|\^|:|_|!|,/u, " ") 
       |> String.split()
     word_dict = build_map(tokens, Map.new())
   end
