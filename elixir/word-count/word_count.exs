@@ -7,9 +7,9 @@ defmodule Words do
   @spec count(String.t) :: map()
   def count(sentence) do
     tokens = sentence 
-    |> String.downcase()
-    |> String.replace(~r/@|#|\$|%|&|\^|:|_|!|,/u, " ") 
-    |> String.split()
+      |> String.downcase()
+      |> String.replace(~r/@|#|\$|%|&|\^|:|_|!|,/u, " ") 
+      |> String.split()
     Enum.reduce(tokens, Map.new(), &count_word/2)
   end
 
