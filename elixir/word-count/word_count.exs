@@ -6,7 +6,10 @@ defmodule Words do
   """
   @spec count(String.t) :: map()
   def count(sentence) do
-    tokens = String.split(String.replace(String.downcase(sentence), ~r/[[:punct:]]/, " ")) 
+    tokens = sentence 
+      |> String.downcase()
+      |> String.replace(~r/[[:punct:]]/, " ") 
+      |> String.split()
     word_dict = build_map(tokens, Map.new())
   end
 
