@@ -4,7 +4,7 @@ defmodule Sublist do
   and if not whether it is equal or unequal to the second list.
   """
   @spec compare(list, list) :: :equal | :unequal | :sublist | :superlist
-  def compare(a, b) when a === b, do: :equal
+  def compare(same_list, same_list), do: :equal
   def compare(a, b) do
     # Cond will return on first match
     cond do
@@ -16,9 +16,9 @@ defmodule Sublist do
 
   # Compare already checks if lists are equal so there will be no
   # case of sublist?([], [])
+  defp sublist?(a, b) when length(a) > length(b), do: false
   defp sublist?([], _), do: true
   defp sublist?(_, []), do: false
-  defp sublist?(a, b) when length(a) > length(b), do: false
   defp sublist?(a, b=[_ | tail]) do
     if list_in_list?(a, b), do: true, else: sublist?(a, tail)
   end
