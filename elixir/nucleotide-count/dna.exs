@@ -32,7 +32,7 @@ defmodule DNA do
   def nucleotide_counts(strand) do
     validate(strand)
     Enum.reduce(@nucleotides, %{}, fn(base, base_map) -> 
-      Dict.put_new(base_map, base, count(strand, base))
+      Map.put_new(base_map, base, count(strand, base))
     end)
   end
 
