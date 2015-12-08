@@ -11,6 +11,6 @@ defmodule DNA do
   def hamming_distance(strand1, strand2) 
     when length(strand1) != length(strand2), do: nil
   def hamming_distance(strand1, strand2) do
-    Enum.zip(strand1, strand2) |> Enum.count(&(elem(&1, 0) != elem(&1, 1)))
+    Enum.zip(strand1, strand2) |> Enum.count(fn({x, y}) -> x != y end)
   end
 end
